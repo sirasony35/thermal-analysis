@@ -8,6 +8,9 @@
 - **손상 파일 2건 (재확보 필요)**: `thermal_data/SM16_02_260814_LWIR.tif`(처리 불가), `rgb_data/SM18_02_260814_RGB.tif`(GNDVI 폴백으로 처리됨). 재복사 후 `python cwsi_index.py SM16 SM18`로 재처리
 - 핵심 결과: 2025-09-22 회차는 11/12필지 QC 경고(온도대비 1.4°C, 판정 보류), 스트레스 상위 필지 SM21·SM23(2026-07-07), 260715 회차는 식생 3.4%라 대표성 낮음
 - **`종합검토보고서_CWSI_v2.md`** — 로직 검토 + v1/v2 정량비교 + 전체 결과 + 상용 활용성 평가 (최종 산출 문서)
+- **`CWSI_v2_기술이관_대동양식.pptx`** — 개발사 전달용 최종본(12슬라이드, 대동 공식 양식 적용). 구판 `CWSI_v2_기술이관_대동애그테크.pptx`(자체 디자인 13슬라이드)도 보존
+- PPT 제작 환경 메모: 이 PC엔 node/LibreOffice 없음 → python-pptx(base conda) + PowerPoint COM 렌더 QA. **python-pptx build_freeform은 PowerPoint가 손상 파일로 거부** → 대각선은 PARALLELOGRAM+adjustment로 구현
+- **대동 PPT 양식**: `12_PPT양식/_대동_PPT_양식_가이드.md` 필독 (10.83"×7.5", 네이비 #002060+레드 #EF4023, 거버닝 메시지, 고밀도 원칙). 로고는 티타임 pptx의 ppt/media/image2.png(672×126)
 - 병렬 실행 지원: `CWSI_PART=p1 python cwsi_index.py SM01 SM02 ...` (워커별 요약 CSV 분리, 4워커로 84쌍 ~1시간)
 
 ## 프로젝트 개요
