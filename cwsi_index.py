@@ -408,11 +408,13 @@ def process_pair(pair, temp_data, summary_name="cwsi_summary.csv"):
         valid_total = ~np.isnan(gndvi)
         veg_frac = float(np.sum(mask)) / max(1, int(np.sum(valid_total)))
         print(f"      └ [마스킹] {mask_method}, 임계값 {thr:.4f}, 식생 비율 {veg_frac * 100:.1f}%")
+        veg_qc = None
         if not (QC_VEG_MIN <= veg_frac <= QC_VEG_MAX):
+            veg_qc = f"veg_ratio_{veg_frac:.3f}"
             print(f"      └ [QC경고] 식생 비율이 비정상 범위입니다 ({veg_frac * 100:.1f}%). 마스크 확인 필요")
     else:
         mask = ~np.isnan(gndvi)
-        mask_method, thr, veg_frac = "none", None, 1.0
+        mask_method, thr, veg_frac, veg_qc = "none", None, 1.0, None
         print("      └ [마스킹 해제] 토양 포함 전체 영역 분석")
     del exg
     gc.collect()
@@ -422,6 +424,8 @@ def process_pair(pair, temp_data, summary_name="cwsi_summary.csv"):
         print("      └ [경고] 유효한 분석 영역이 없습니다.")
         return
     cwsi_map, stats = result
+    if veg_qc:
+        stats['qc'] = ";".join(x for x in [stats['qc'], veg_qc] if x)
 
     os.makedirs(DIR_OUTPUT, exist_ok=True)
     title = f"{pair['code']} #{pair['session']} ({pair['date']})"
