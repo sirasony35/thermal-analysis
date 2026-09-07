@@ -30,6 +30,7 @@
 - `temp_data.csv` — 날짜별 기온 (date=YYMMDD int)
 - `참고논문/` — CWSI 논문 8편 (PDF 6 + DOCX 2)
 - `논문비교_CWSI로직업그레이드.md` — **논문 방법론 비교·검증·업그레이드 근거 문서 (필독)**
+- `참고논문_요약집.md` — 논문 8편 상세 요약 (논문별 서지·설계·방법·수치·채택여부 + v2 대응표)
 - RGB 정사영상: **`rgb_data/`** ({태그}_RGB.tif, 4밴드 uint8 RGBA, 별도 그리드). 2025년 36개(19GB)를 2026-08-31 사용자 요청으로 geotiff_processing/data에서 **이동**해 옴(원본 위치엔 더 이상 없음). 스크립트 탐색 순서: rgb_data → geotiff_processing/data. **2026년 SM13~24 RGB는 아직 없음 — 확보 시 rgb_data/에 넣으면 ExG 마스킹 자동 적용**
 
 ## v2 로직 (cwsi_index.py)
